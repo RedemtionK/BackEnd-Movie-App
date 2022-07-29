@@ -44,7 +44,13 @@ public class UserController {
 
     })
     public  ResponseEntity createUser(@RequestBody UserModel user){
-        var response = new CustomizedResponse("User created successfully: "+user.getId(), Collections.singletonList(userService.addUser(user)));
+        CustomizedResponse response = null;
+        try {
+            response = new CustomizedResponse("User created successfully: "+user.getId(), Collections.singletonList(userService.addUser(user)));
+        } catch (Exception e) {
+            response = new CustomizedResponse(e.getMessage(),null);
+            return  new ResponseEntity(response, HttpStatus.NOT_FOUND);
+        }
         return  new ResponseEntity(response, HttpStatus.OK);
     }
 }

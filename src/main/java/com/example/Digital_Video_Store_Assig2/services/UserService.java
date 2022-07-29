@@ -25,9 +25,10 @@ public class UserService implements UserDetailsService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserModel addUser(UserModel user)
-    {
-
+    public UserModel addUser(UserModel user) throws Exception {
+        if(user.getEmail().isEmpty()||user.getFirstName().isEmpty()||user.getPassword().isEmpty()||user.getLastName().isEmpty()){
+            throw new Exception("The information Entered is incorrect");
+        }
 
         String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
 
