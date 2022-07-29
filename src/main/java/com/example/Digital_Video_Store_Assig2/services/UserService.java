@@ -44,7 +44,10 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
     public Optional<UserModel> getAUser(String id) throws Exception {
-        if(id.length()<22){
+        if(id.length()<22||id.contains("!")||id.contains("@")||id.contains("#")||id.contains("$")||id.contains("%")||id.contains("^")||id.contains("&")||id.contains("*")||id.contains("(")||id.contains(")")||id.contains("-")
+                ||id.contains("_")||id.contains("+")||id.contains("=")||id.contains(";")||id.contains(":")||id.contains("'")
+                ||id.contains("<")||id.contains(">")||id.contains(",")||id.contains(".")||id.contains("/")||id.contains("?")
+                ||id.contains("|")||id.contains("~")||id.contains("`")){
             throw  new Exception("Entered Id is not Valid");
         }
         Optional<UserModel> user = userRepository.findById(id);
