@@ -58,7 +58,7 @@ public class MovieController {
     }
 
     @DeleteMapping("/movies/{id}")
-    public ResponseEntity deleteMovies(@PathVariable("id") String id,@RequestBody MovieModel movieModel)
+    public ResponseEntity deleteMovies(@PathVariable("id") String id)
     {
         CustomizedResponse customizedResponse = null;
         try {
