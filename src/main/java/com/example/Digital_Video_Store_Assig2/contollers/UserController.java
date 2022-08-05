@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins={"http://localhost:3000","https://movie-app-klaus.herokuapp.com/"})
 @RestController
 public class UserController {
 
